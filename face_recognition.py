@@ -18,9 +18,10 @@ while True:
         cv2.rectangle(frame, (x,y), (x+w, y+h), (255, 0, 0), 2)
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = frame[y:y + h, x:x + w]
-        smiles = smile_cascade.detectMultiScale(roi_gray, 1.8, 20)
+        smiles = smile_cascade.detectMultiScale(roi_gray, 1.7, 20)
         for (sx, sy, sw, sh) in smiles:
             cv2.rectangle(roi_color, (sx, sy), ((sx + sw), (sy + sh)), (0, 0, 255), 2)
+            cv2.putText(roi_color, 'Smile', (sx, sy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 0), 2)
     #displays the result on the camera feed
     cv2.imshow('Video Feed', frame)
     
